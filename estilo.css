@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 100vw;
+    margin: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header, nav, main, aside, footer {
+    background: #9b1616; /* Azul Supermercado */
+    display: flex;
+    margin: 3px;
+}
+
+header {
+    height: 100px;
+    flex: 1 1 100vw;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#logo {
+    display: flex;
+    flex: 0 1 200px;
+    background: #fff; /* Fundo branco para o logo */
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #36941a; /* Cor azul para o texto do logo */
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 10px;
+    height: 100px;
+    border-radius: 8px;
+}
+
+#openMenu, #closeMenu {
+    border: none;
+    background: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0px 15px 0px 15px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+}
+
+nav {
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1 1 200px;
+}
+
+nav a {
+    margin: 0 15px;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #e74c3c; /* Cor vermelha no hover */
+}
+
+main {
+    height: calc(100vh - 224px);
+    flex: 20 1 500px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+aside {
+    flex: 1 1 200px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #36941a; /* Cor azul para os títulos */
+    margin-top: -10px;
+    padding: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+input, select {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    background-color: #9b1616;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #9b1616; /* Cor um pouco mais escura no hover */
+}
+
+footer {
+    height: 100px;
+    flex: 1 1 100vw;
+    background: #9b1616;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cliente  {
+    margin-left: 300px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #9b1616;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+@media only screen and (max-width: 717px) {
+    #openMenu {
+        display: block;
+        margin-left: auto;
+    }
+
+    #closeMenu {
+        position: fixed;
+        right: 15px;
+        top: 15px;
+        display: block;
+    }
+
+    header {
+        order: 0;
+    }
+
+    nav {
+        order: 1;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.9);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        display: none;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    nav a {
+        margin: 10px;
+        font-size: 18px;
+    }
+
+    main {
+        order: 2;
+        height: calc(100vh - 330px);
+        
+    }
+
+    aside {
+        order: 3;
+        height: auto;
+    }
+
+    footer {
+        order: 4;
+    }
+}
