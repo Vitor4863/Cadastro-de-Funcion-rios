@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("conexao.php");
+include_once("../dao/conexao.php");
 
 // Verifica se o ID do cliente está presente na URL
 if (isset($_GET['id'])) {
@@ -47,6 +47,6 @@ if (isset($_GET['id'])) {
     $_SESSION['msg'] = "ID do cliente não especificado.";
 }
 
-header("Location: modelo.php");
+header("Location:../visao/modelo.php");
 exit();
 ?>

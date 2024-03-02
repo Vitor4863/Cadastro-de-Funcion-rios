@@ -33,7 +33,7 @@ $conn->close();
 <body>
 <header>
         <div class="logo-container">
-            <a href="./layout.html" id="logo"><img src="img/logo-removebg-preview.png" alt=""></a>
+            <a href="./layout.html" id="logo"><img src="../img/logo-removebg-preview.png" alt=""></a>
         </div>
        
         <nav id="menu">

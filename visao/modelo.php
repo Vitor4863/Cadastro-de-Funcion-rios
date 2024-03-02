@@ -1,3 +1,9 @@
+ <?php
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +17,7 @@
 
     <header>
         <div class="logo-container">
-            <a href="./layout.html" id="logo"><img src="img/logo-removebg-preview.png" alt=""></a>
+            <a href="modelo.php" id="logo"><img src="../img/logo-removebg-preview.png" alt=""></a>
         </div>
         <button id="openMenu">&#9776;</button>
         <nav id="menu">
@@ -20,13 +26,24 @@
             <a href="#">Consulta</a>
             <a href="#">Segurança</a>
             <a href="#">Contato</a>
+             <span><?php
+             if (!empty($_SESSION['id'])) {
+                echo "<div style='color: white; font-family: Arial; background-color: black; padding: 10px; border-radius: 10px;'>";
+                echo "Olá " . $_SESSION['nome'] . ", Bem-vindo <br>";
+                echo "<a href='../Login/index.php'>Sair</a>";
+                echo "</div>";
+            } else {
+                $_SESSION['msg'] = "Área restrita";
+                header("Location: login.php");	
+            }
+             ?></span>
         </nav>
     </header>
 
     <aside>
         <center>
             <h2>Gerenciar Funcionarios</h2>
-            <form action="conexao.php" method="POST" id="userForm">
+            <form action="../dao/Funcionarios.php" method="POST" id="userForm">
                 <label for="username">Nome do Cliente:</label>
                 <input type="text" id="username" name="username" required placeholder="Usuário">
                 <label for="username">Código:</label>
@@ -100,10 +117,10 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["setor"] . "</td>";
         echo "<td>" . $row["loja"] . "</td>";
         echo "<td style='background-color: #0000FF; border-radius: 1000px;'>
-        <a href='editar_cliente.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
+        <a href='../editar/editar_cliente.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
       </td>";
 echo "<td style='background-color: #FFA500; border-radius: 100px;'>
-        <a href='excluir_cliente.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Excluir</a>
+        <a href='../excluir/excluir_cliente.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Excluir</a>
       </td>";
 
 

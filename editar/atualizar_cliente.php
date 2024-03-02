@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Erro ao atualizar o cliente: " . $conn->error;
     }
-    header("Location: modelo.php");
+    header("Location: ../visao/modelo.php");
 }
 
 $conn->close();

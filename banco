@@ -11,9 +11,14 @@ CREATE TABLE IF NOT EXISTS clientes (
     loja VARCHAR(50) NOT NULL
    
 );
+CREATE TABLE usuarios (
+  id int primary key auto_increment,
+  nome varchar(220) NOT NULL,
+  email varchar(220) NOT NULL,
+  usuario varchar(220) NOT NULL,
+  senha varchar(220) NOT NULL
+);
 
+select * from usuarios;
 
-
-select * from clientes;
-
-drop table clientes;
+drop table usuario;
