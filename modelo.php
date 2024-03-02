@@ -25,7 +25,7 @@
 
     <aside>
         <center>
-            <h2>Gerenciar Clientes</h2>
+            <h2>Gerenciar Funcionarios</h2>
             <form action="conexao.php" method="POST" id="userForm">
                 <label for="username">Nome do Cliente:</label>
                 <input type="text" id="username" name="username" required placeholder="Usuário">
@@ -62,7 +62,7 @@
                     <!-- Adicione opções conforme necessário -->
                 </select>
 
-                <button type="submit">Criar Cliente</button>
+                <button type="submit">Criar Funcionario</button>
             </form>
         </center>
     </aside>

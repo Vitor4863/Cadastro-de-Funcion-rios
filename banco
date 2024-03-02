@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS supermercado_db;
+USE supermercado_db;
+
+-- Criação da tabela clientes
+CREATE TABLE IF NOT EXISTS clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_cliente VARCHAR(255) NOT NULL,
+    codigo VARCHAR(50) NOT NULL,
+    status ENUM('active', 'blocked') NOT NULL,
+    setor VARCHAR(50) NOT NULL,
+    loja VARCHAR(50) NOT NULL
+   
+);
+
+
+
+select * from clientes;
+
+drop table clientes;

@@ -89,7 +89,7 @@ $conn->close();
 
         <!-- Adicione outros campos conforme necessário -->
 
-        <button type="submit">Atualizar Cliente</button>
+        <button type="submit">Atualizar Funcionario</button>
     </form>
     </center>
     <br><br><
