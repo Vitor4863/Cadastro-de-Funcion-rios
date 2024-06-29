@@ -104,11 +104,11 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["status"] . "</td>";
         echo "<td>" . $row["localizacao"] . "</td>";
         echo "<td>" . $row["nome_usuario"] . "</td>";
-        echo "<td style='background-color: #000; border-radius: 1000px;'>
-        <a href='../editar/editar_notebook.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
+        echo "<td  '>
+        <a href='../editar/editar_notebook.php?id=" . $row['id'] . "' style='color: #00008b; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
       </td>";
-echo "<td style='background-color: #FFA500; border-radius: 100px;'>
-        <a href='../excluir/excluir_notebook.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Excluir</a>
+echo "<td style=' '>
+        <a href='../excluir/excluir_notebook.php?id=" . $row['id'] . "' style='color: #Ff4040; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Excluir</a>
       </td>";
         echo "</tr>";
     }
