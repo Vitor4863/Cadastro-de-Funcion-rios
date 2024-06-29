@@ -1,24 +1,29 @@
+-- Cria o banco de dados se não existir
 CREATE DATABASE IF NOT EXISTS supermercado_db;
+
+-- Seleciona o banco de dados recém-criado
 USE supermercado_db;
 
--- Criação da tabela clientes
-CREATE TABLE IF NOT EXISTS clientes (
+-- Criação da tabela notebooks
+CREATE TABLE IF NOT EXISTS notebooks (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome_cliente VARCHAR(255) NOT NULL,
-    codigo VARCHAR(50) NOT NULL,
-    status ENUM('active', 'blocked') NOT NULL,
-    setor VARCHAR(50) NOT NULL,
-    loja VARCHAR(50) NOT NULL
-   
+    nome_notebook VARCHAR(255) NOT NULL,
+    serial VARCHAR(50) NOT NULL,
+     status varchar(50) NOT NULL,
+    localizacao VARCHAR(100) NOT NULL,
+    nome_usuario VARCHAR(50) NOT NULL
 );
-CREATE TABLE usuarios (
-  id int primary key auto_increment,
-  nome varchar(220) NOT NULL,
-  email varchar(220) NOT NULL,
-  usuario varchar(220) NOT NULL,
-  senha varchar(220) NOT NULL
+ 
+ CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    usuario VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-select * from usuarios;
-
-drop table usuario;
+ drop table usuarios;
+ select * from usuarios;
+-- Exibe a estrutura da tabela notebooks criada
+DESCRIBE notebooks;
