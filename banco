@@ -22,8 +22,16 @@ CREATE TABLE IF NOT EXISTS notebooks (
     senha VARCHAR(255) NOT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE agendamentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_cliente VARCHAR(255) NOT NULL,
+    nome_notebook VARCHAR(255) NOT NULL,
+    data_agendamento DATETIME NOT NULL,
+    localizacao VARCHAR(255) NOT NULL
+);
 
- drop table usuarios;
- select * from usuarios;
+
+ drop table agendamentos;
+ select * from agendamentos;
 -- Exibe a estrutura da tabela notebooks criada
 DESCRIBE notebooks;

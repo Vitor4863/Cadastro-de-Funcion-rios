@@ -35,16 +35,18 @@ session_destroy();
 				<input type="password" name="senha" placeholder="Digite a sua senha">
 				
 				  
-				
+				  
                 <button type="submit" name="btnLogin" value="Acessar">Acessar</button>  
 				<a class= "conta" href="../cadastro/caduser.php">Crie sua conta</a> 
+			
 				
 			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
-                     <img src="../img/logo-removebg-preview (1).png "alt="" width="300px">
+                     <img src="../img/logo-removebg-preview (1).png "alt="" width="300px"><br><br>
+					 <a href="../visao/agendar.php" class="conta" style="background-color: green; color:white">Agenda Aqui!</a>
 					<h1</h1>
 					<p></p>
 				</div>

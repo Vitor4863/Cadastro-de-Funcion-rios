@@ -20,7 +20,7 @@ session_start();
         <button id="openMenu">&#9776;</button>
         <nav id="menu">
             <button id="closeMenu">X</button>
-            
+            <span><a href="agenda-ti.php">Agendamentos</a></span
             <span><?php
             if (!empty($_SESSION['id'])) {
                 echo "<div style='color: white; font-family: Arial; background-color: black; padding: 20px; border-radius: 10px;'>";
