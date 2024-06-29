@@ -1,46 +1,47 @@
-
-
-
-
 <?php
-
-// Executa a conexao com o mysql e selecionar a base
+// Inclui o arquivo de conexão com o banco de dados
 include_once 'conexao.php';
 
-//Recupera os dados enviados via POST
-// recebe o Nome
+// Verifica se o formulário foi enviado via POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recupera os dados enviados via POST
+    $nome_notebook = $_POST["nome_notebook"];
+    $serial = $_POST["serial"];
+    $status = $_POST["status"];
+    $localizacao = $_POST["localizacao"];
+    $nome_usuario = $_POST["nome_usuario"];
 
-$nome = $_POST["nome"];
-// recebe o Email
-$email = $_POST["email"];
-// recebe a senha Digitada
-$usuario = $_POST["usuario"];
-// recebe o perfil do usuario
-$senha = PASSWORD_HASH($_POST["senha"], PASSWORD_DEFAULT);
+    // Prepara a query SQL usando Prepared Statements
+    $sql = "INSERT INTO notebooks (nome_notebook, serial, status, localizacao, nome_usuario) VALUES (?, ?, ?, ?,?)";
 
+    // Prepara a declaração
+    $stmt = mysqli_prepare($conn, $sql);
 
+    if ($stmt) {
+        // Binda parâmetros às variáveis
+        mysqli_stmt_bind_param($stmt, "ssss", $nome_notebook, $codigo, $status, $localizacao);
 
-//montar a query sql de gravação recebendo as variaveis via post
+        // Executa a declaração
+        if (mysqli_stmt_execute($stmt)) {
+            $msg = "Notebook cadastrado com sucesso!";
+        } else {
+            $msg = "Erro ao cadastrar notebook: " . mysqli_stmt_error($stmt);
+        }
 
-$sql = "INSERT INTO usuarios values (null,'$nome', '$email', '$usuario', '$senha')";
+        // Fecha a declaração
+        mysqli_stmt_close($stmt);
+    } else {
+        $msg = "Erro na preparação da declaração SQL: " . mysqli_error($conn);
+    }
 
+    // Fecha a conexão com o banco de dados
+    mysqli_close($conn);
 
-//Faz a conexao e executa a instrucao carregada na varivael $sql e os envia para o banco mysql.
-if (mysqli_query($conn, $sql)){
-    // Caso a conexao esteja correta cria o retorno do cadastro
-    $msg = "Cadastrado com sucesso!";
-}else{    
-    // Caso a conexao nao seja realizada cria o retorno do cadastro com erro
-    $msg = "Erro ao Cadastrar";
+    // Exibe um alerta em JavaScript com a mensagem de sucesso ou erro e redireciona para o index
+    echo "<script>alert ('".$msg."'); location.href='index.php';</script>";
+} else {
+    // Se o formulário não foi enviado via POST, redireciona para o index
+    header("Location: index.php");
+    exit();
 }
-// Encerra a conexão com o banco
-mysqli_close($conn);
-// Cria um alert javascript carrega o conteúdo da variável $msg e redireciona para o index
-echo "<script>alert ('".$msg."'); location.href='login.php';</script>"
-        
-
-?>
-
-
-
 ?>

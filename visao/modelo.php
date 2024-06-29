@@ -1,7 +1,5 @@
- <?php
+<?php
 session_start();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="estilo.css">
     
-    <title>Layout com Gerenciamento de Usuários - Supermercado</title>
+    <title>Organização de Notebooks para Empréstimo</title>
 </head>
 <body>
 
@@ -22,12 +20,9 @@ session_start();
         <button id="openMenu">&#9776;</button>
         <nav id="menu">
             <button id="closeMenu">X</button>
-            <a href="#">Cadastro</a>
-            <a href="#">Consulta</a>
-            <a href="#">Segurança</a>
-            <a href="#">Contato</a>
-             <span><?php
-             if (!empty($_SESSION['id'])) {
+            
+            <span><?php
+            if (!empty($_SESSION['id'])) {
                 echo "<div style='color: white; font-family: Arial; background-color: black; padding: 10px; border-radius: 10px;'>";
                 echo "Olá " . $_SESSION['nome'] . ", Bem-vindo <br>";
                 echo "<a href='../Login/index.php'>Sair</a>";
@@ -36,50 +31,43 @@ session_start();
                 $_SESSION['msg'] = "Área restrita";
                 header("Location: login.php");	
             }
-             ?></span>
+            ?></span>
         </nav>
     </header>
 
     <aside>
         <center>
-            <h2>Gerenciar Funcionarios</h2>
-            <form action="../dao/Funcionarios.php" method="POST" id="userForm">
-                <label for="username">Nome do Cliente:</label>
-                <input type="text" id="username" name="username" required placeholder="Usuário">
-                <label for="username">Código:</label>
-                <input type="text" id="codigo" name="codigo" required placeholder="Código">
+            <h2>Gerenciar Notebooks</h2>
+            <form action="../dao/Funcionarios.php" method="POST" id="notebookForm">
+                <label for="notebookName">Nome do Notebook:</label>
+                <input type="text" id="notebookName" name="nome_notebook" required placeholder="Nome do Notebook">
+                
+                <label for="notebookCode">Serial:</label>
+                <input type="text" id="Serial" name="serial" required placeholder="Serial">
 
                 <label for="status">Status:</label>
                 <select id="status" name="status" required>
-                    <option value="active">Ativo</option>
-                    <option value="blocked">Bloqueado</option>
-                    <!-- Adicione opções conforme necessário -->
+                    <option value="Disponível">Disponível</option>
+                    <option value="Emprestado">Emprestado</option>
+                    <option value="Reservado">Reservado]</option>
                 </select>
-                <label for="status">Setores:</label>
-                <select id="setores" name="setores" required>
+                
+                <label for="location">Localização:</label>
+                <select id="location" name="localizacao" required>
                     <option value="RH">RH</option>
+                    <option value="Indicadores">Indicadores</option>
                     <option value="CPD">CPD</option>
-                    <option value="Prevenção">Prevenção</option>
-                    <option value="Operador">Operador</option>
-                    <option value="Price">Price</option>
-                    <option value="IFood">IFood</option>
-                    <option value="Jurídico">Jurídico</option>
-                    <!-- Adicione opções conforme necessário -->
-                </select>
+                    <option value="Juridico">Juridico</option>
+                    <option value="TI">TI</option>
+                    <option value="Diretoria">Diretoria</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Compras">Compras</option>
 
-                <label for="status">Loja:</label>
-                <select id="loja" name="loja" required>
-                    <option value="Fonseca">Fonseca</option>
-                    <option value="Barreto">Barreto</option>
-                    <option value="Porto-Velho">Porto-Velho</option>
-                    <option value="Porto-Nov o">Porto=Novo</option>
-                    <option value="Largo">Largo</option>
-                    <option value="Piratininga">Piratininga</option>
-                    <option value="Mesquita">Mesquita</option>
-                    <!-- Adicione opções conforme necessário -->
+                    
                 </select>
-
-                <button type="submit">Criar Funcionario</button>
+                <label for="location">Nome do Cliente:</label>
+                <input type="text" id="nome-usuario" name="nome_usuario" required placeholder="Nome do Usuario">
+                <button type="submit">Cadastrar Notebook</button>
             </form>
         </center>
     </aside>
@@ -99,31 +87,29 @@ if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Realiza a consulta SQL para obter os dados da tabela clientes
-$sql = "SELECT * FROM clientes";
+// Realiza a consulta SQL para obter os dados da tabela notebooks
+$sql = "SELECT * FROM notebooks";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Exibe os dados em uma tabela HTML
     echo "<table>";
-    echo "<tr><th>ID</th><th>Nome do Cliente</th><th>Código</th><th>Status</th><th>Setor</th><th>Loja</th><th>Editar</th><th>Ex</th></tr>";
+    echo "<tr><th>ID</th><th>Nome do Notebook</th><th>Serial</th><th>Status</th><th>Localização</th><th>Usuario</th><th>Editar</th><th>Excluir</th></tr>";
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row["id"] . "</td>";
-        echo "<td>" . $row["nome_cliente"] . "</td>";
-        echo "<td>" . $row["codigo"] . "</td>";
+        echo "<td>" . $row["nome_notebook"] . "</td>";
+        echo "<td>" . $row["serial"] . "</td>";
         echo "<td>" . $row["status"] . "</td>";
-        echo "<td>" . $row["setor"] . "</td>";
-        echo "<td>" . $row["loja"] . "</td>";
+        echo "<td>" . $row["localizacao"] . "</td>";
+        echo "<td>" . $row["nome_usuario"] . "</td>";
         echo "<td style='background-color: #0000FF; border-radius: 1000px;'>
-        <a href='../editar/editar_cliente.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
+        <a href='../editar/editar_notebook.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
       </td>";
 echo "<td style='background-color: #FFA500; border-radius: 100px;'>
-        <a href='../excluir/excluir_cliente.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Excluir</a>
+        <a href='../excluir/excluir_notebook.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Excluir</a>
       </td>";
-
-
         echo "</tr>";
     }
 
@@ -135,16 +121,9 @@ echo "<td style='background-color: #FFA500; border-radius: 100px;'>
 // Fecha a conexão
 $conn->close();
 ?>
-
-</div>
-    </div>
     </main>
     <footer>
     </footer>
-    <script>
-
-    </script>
-
     <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>

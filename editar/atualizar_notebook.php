@@ -11,27 +11,27 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cliente_id = $_POST['cliente_id'];
-    $nome_cliente = $_POST['nome_cliente'];
-    $codigo = $_POST['codigo'];
+    $notebook_id = $_POST['notebook_id'];
+    $nome_notebook = $_POST['nome_notebook'];
+    $codigo = $_POST['serial'];
     $status = $_POST['status'];
-    $setores = $_POST['setores'];
-    $loja = $_POST['loja'];
+    $localizacao = $_POST['localizacao'];
+    $nome_usuario = $_POST["nome_usuario"];
 
     // Aqui você pode adicionar outros campos conforme necessário
 
-    $sql = "UPDATE clientes SET 
-            nome_cliente = '$nome_cliente',
+    $sql = "UPDATE notebooks SET 
+            nome_notebook = '$nome_notebook',
             codigo = '$codigo',
             status = '$status',
-            setor = '$setores',
-            loja = '$loja'
-            WHERE id = $cliente_id";
+            localizacao = '$localizacao'
+            nome_usuario = '$nome_usuario'
+            WHERE id = $notebook_id";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Cliente atualizado com sucesso!";
+        echo "Notebook atualizado com sucesso!";
     } else {
-        echo "Erro ao atualizar o cliente: " . $conn->error;
+        echo "Erro ao atualizar o notebook: " . $conn->error;
     }
     header("Location: ../visao/modelo.php");
 }
