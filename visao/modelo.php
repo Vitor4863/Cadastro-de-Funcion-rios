@@ -104,7 +104,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["status"] . "</td>";
         echo "<td>" . $row["localizacao"] . "</td>";
         echo "<td>" . $row["nome_usuario"] . "</td>";
-        echo "<td style='background-color: #0000FF; border-radius: 1000px;'>
+        echo "<td style='background-color: #000; border-radius: 1000px;'>
         <a href='../editar/editar_notebook.php?id=" . $row['id'] . "' style='color: #fff; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
       </td>";
 echo "<td style='background-color: #FFA500; border-radius: 100px;'>
