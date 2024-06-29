@@ -49,7 +49,7 @@ session_start();
                 <select id="status" name="status" required>
                     <option value="Disponível">Disponível</option>
                     <option value="Emprestado">Emprestado</option>
-                    <option value="Reservado">Reservado]</option>
+                    <option value="Reservado">Reservado</option>
                 </select>
                 
                 <label for="location">Localização:</label>
