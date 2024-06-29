@@ -78,6 +78,7 @@ $conn->close();
     <option value="Tesouraria" <?php echo ($notebook['localizacao'] == 'Tesouraria') ? 'selected' : ''; ?>>Tesouraria</option>
 </select>
 
+     <label for="location">Nome do Cliente:</label>
 <input type="text" id="nome-usuario" name="nome_usuario" value="<?php echo $notebook['nome_usuario']; ?>" required placeholder="Nome do Usuário">
         
 
