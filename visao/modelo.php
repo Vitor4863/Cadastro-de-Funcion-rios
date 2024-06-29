@@ -23,7 +23,7 @@ session_start();
             
             <span><?php
             if (!empty($_SESSION['id'])) {
-                echo "<div style='color: white; font-family: Arial; background-color: black; padding: 10px; border-radius: 10px;'>";
+                echo "<div style='color: white; font-family: Arial; background-color: black; padding: 20px; border-radius: 10px;'>";
                 echo "Olá " . $_SESSION['nome'] . ", Bem-vindo <br>";
                 echo "<a href='../Login/index.php'>Sair</a>";
                 echo "</div>";
