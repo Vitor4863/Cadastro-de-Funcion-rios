@@ -104,12 +104,17 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["status"] . "</td>";
         echo "<td>" . $row["localizacao"] . "</td>";
         echo "<td>" . $row["nome_usuario"] . "</td>";
-        echo "<td  '>
-        <a href='../editar/editar_notebook.php?id=" . $row['id'] . "' style='color: #00008b; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Editar</a>
+        echo "<td>
+        <a href='../editar/editar_notebook.php?id=" . $row['id'] . "' style='color: #00008b; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>
+            <img src='../img/editar-arquivo.png' alt='Editar' style='vertical-align: middle; margin-right: 5px; width: 50px; height: 50px;'> 
+        </a>
       </td>";
-echo "<td style=' '>
-        <a href='../excluir/excluir_notebook.php?id=" . $row['id'] . "' style='color: #Ff4040; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>Excluir</a>
-      </td>";
+      echo "<td style=''>
+      <a href='../excluir/excluir_notebook.php?id=" . $row['id'] . "' style='color: #Ff4040; text-decoration: none; display: block; padding: 5px 10px; border-radius: inherit;'>
+          <img src='../img/excluir.png' alt='Excluir' style='vertical-align: middle; margin-right: 5px; width: 50px; height: 50px;'> 
+      </a>
+    </td>";
+
         echo "</tr>";
     }
 
