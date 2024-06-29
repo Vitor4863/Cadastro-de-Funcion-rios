@@ -38,10 +38,7 @@ $conn->close();
        
         <nav id="menu">
             
-            <a href="#">Cadastro</a>
-            <a href="#">Consulta</a>
-            <a href="#">Segurança</a>
-            <a href="#">Contato</a>
+          
         </nav>
     </header>
     <center>
