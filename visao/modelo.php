@@ -62,6 +62,13 @@ session_start();
                     <option value="Diretoria">Diretoria</option>
                     <option value="Marketing">Marketing</option>
                     <option value="Compras">Compras</option>
+                    <option value="Manutenção">Manutenção</option>
+                    <option value="Finaceiro">Financeiro</option>
+                    <option value="Contabilidade">Contabilidade</option>
+                    <option value="Price">Price</option>
+                    <option value="Auditoria">Auditoria</option>
+                    <option value="Tesouraria">Tesouraria</option>
+                
 
                     
                 </select>
